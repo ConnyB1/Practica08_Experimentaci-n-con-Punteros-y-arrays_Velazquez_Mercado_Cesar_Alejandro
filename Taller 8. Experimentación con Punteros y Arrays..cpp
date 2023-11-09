@@ -16,6 +16,11 @@ int busquedaLinealPalabra(char *arreglo[], int n, char *palabra);
 
 int main() 
 {
+    clock_t inicio, fin;
+    float tiempo;
+
+    
+    inicio = clock(); // Realizar la búsqueda lineal de la palabra y medir el tiempo
     srand(time(NULL));
 
     int n = ARRAY_SIZE; // Tamaño del arreglo
@@ -34,18 +39,14 @@ int main()
 
     
     printf("Arreglo de cadenas:\n"); // Imprimir el arreglo de cadenas
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
+    {
         printf("%s\n", arreglo[i]);
     }
 
-    clock_t inicio, fin;
-    float tiempo;
-
     
-    inicio = clock(); // Realizar la búsqueda lineal de la palabra y medir el tiempo
     int resultado = busquedaLinealPalabra(arreglo, n, palabraBuscada);
-    fin = clock();
-    tiempo = (float)(fin - inicio) / CLOCKS_PER_SEC;
+    
 
     if (resultado != -1) 
     {
@@ -53,14 +54,10 @@ int main()
     } else {
         printf("Palabra '%s' no encontrada\n", palabraBuscada);
     }
-
+    fin = clock();
+    tiempo = (float)(fin - inicio) / CLOCKS_PER_SEC;
     printf("Tiempo de ejecución: %f segundos\n", tiempo);
 
-    
-    for (int i = 0; i < n; i++)  // Liberar la memoria asignada a las cadenas
-    {
-        free(arreglo[i]);
-    }
 
     return 0;
 }
