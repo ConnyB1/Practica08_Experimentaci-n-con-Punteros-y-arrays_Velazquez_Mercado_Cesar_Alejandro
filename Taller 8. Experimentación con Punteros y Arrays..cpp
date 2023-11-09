@@ -39,13 +39,13 @@ int main()
     }
 
     clock_t inicio, fin;
-    double tiempo;
+    float tiempo;
 
     
     inicio = clock(); // Realizar la búsqueda lineal de la palabra y medir el tiempo
     int resultado = busquedaLinealPalabra(arreglo, n, palabraBuscada);
     fin = clock();
-    tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+    tiempo = (float)(fin - inicio) / CLOCKS_PER_SEC;
 
     if (resultado != -1) 
     {
